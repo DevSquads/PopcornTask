@@ -9,15 +9,15 @@
 # Requirements
 ### UI
 - Login form.
-- List of available popcorns, where each item in the list contains name, price, and type.
+- List of available popcorns, where each item in the list contains price, and type.
 - List of orders.
 - Create order.
 - Edit order.
-- Cancel order.
+- Delete order.
 - Styles and colors are up to you.
 ### Functionality
 - Login with preexisting user.
-- Order popcorn, edit order, cancel order.
+- Order popcorn, edit order, delete order.
 # Stack
 - Choosing stack is up to you.
 # Nice to have
