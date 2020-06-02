@@ -19,7 +19,7 @@
 - Login with preexisting user.
 - Order popcorn, edit order, delete order.
 # Stack
-- Choosing stack is up to you.
+- Choosing the tech stack is up to you.
 # Nice to have
 - Tests.
 - Organized and well written git commit history.
