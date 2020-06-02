@@ -8,8 +8,8 @@
 
 # Requirements
 ### UI
-- Login form
-- List of available popcorn types (each item in the list contains name, price, and type).
+- Login form.
+- List of available popcorns, where each item in the list contains name, price, and type.
 - List of orders.
 - Create order.
 - Edit order.
@@ -18,8 +18,9 @@
 ### Functionality
 - Login with preexisting user.
 - Order popcorn, edit order, cancel order.
-### Test
-- Write tests for each component.
+# Stack
+- Choosing stack is up to you.
 # Nice to have
+- Tests.
 - Organized and well written git commit history.
 - E2E tests.
