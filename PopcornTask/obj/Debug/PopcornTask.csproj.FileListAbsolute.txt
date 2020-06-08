@@ -35,6 +35,10 @@ c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\Popcor
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\bin\System.Web.WebPages.Razor.xml
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\bin\Antlr3.Runtime.pdb
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\bin\Newtonsoft.Json.xml
-c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\obj\Debug\PopcornTask.csprojResolveAssemblyReference.cache
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\obj\Debug\PopcornTask.dll
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\obj\Debug\PopcornTask.pdb
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\bin\EntityFramework.dll
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\bin\EntityFramework.SqlServer.dll
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\bin\EntityFramework.xml
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\bin\EntityFramework.SqlServer.xml
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\bin\FakeHttpContext.dll

@@ -13,7 +13,6 @@ c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\Popcor
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\PopcornTask.Tests.dll.config
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\PopcornTask.Tests.dll
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\PopcornTask.Tests.pdb
-c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\Newtonsoft.Json.dll
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\PopcornTask.dll
@@ -25,7 +24,6 @@ c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\Popcor
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\System.Web.WebPages.Razor.dll
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\System.Web.Optimization.dll
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\PopcornTask.pdb
-c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\Newtonsoft.Json.xml
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\System.Web.Helpers.xml
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\System.Web.Mvc.xml
@@ -37,3 +35,14 @@ c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\Popcor
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\obj\Debug\PopcornTask.Tests.csprojResolveAssemblyReference.cache
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\obj\Debug\PopcornTask.Tests.dll
 c:\users\mohamed hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\obj\Debug\PopcornTask.Tests.pdb
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\EntityFramework.dll
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\EntityFramework.xml
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\Castle.Core.dll
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\Castle.Core.xml
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask.Tests\bin\Debug\FakeHttpContext.dll

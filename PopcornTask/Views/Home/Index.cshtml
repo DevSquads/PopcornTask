@@ -1,5 +1,11 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using PopcornTask.Models
+@using PopcornTask.Shared
+@{
+	ViewBag.Title = "Home Page";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<p>Popcorn</p>
+<div style="margin: 0 auto; width: 400px;">
+	<p>Welcome To Popcorn</p>
+	<p>Logged in as <span style="color:#fd006b;">@SessionContainer.User.Username</span></p>
+</div>

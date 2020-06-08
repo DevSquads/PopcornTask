@@ -6,7 +6,7 @@ namespace PopcornTask {
 		// For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
 		public static void RegisterBundles(BundleCollection bundles) {
 			bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-						"~/Scripts/jquery-{version}.js"));
+						/*"~/Scripts/jquery-{version}.js"*/ "~/Scripts/jquery-3.2.1.min.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
 						"~/Scripts/jquery.validate*"));
@@ -19,10 +19,17 @@ namespace PopcornTask {
 			bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
 					  "~/Scripts/bootstrap.js",
 					  "~/Scripts/respond.js"));
-
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 					  "~/Content/bootstrap.css",
+					  "~/Content/main_styles.css",
 					  "~/Content/site.css"));
+
+
+			//Custom Bundles
+			bundles.Add(new StyleBundle("~/Content/Login").Include(
+					  "~/Content/login.css"));
+			bundles.Add(new ScriptBundle("~/Scripts/Login").Include(
+					  "~/Content/login.js"));
 		}
 	}
 }
