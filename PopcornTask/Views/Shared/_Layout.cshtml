@@ -1,4 +1,8 @@
 ﻿@using PopcornTask.Shared
+@{ 
+	var usernamesm = SessionContainer.User.Username.Trim().Length > 3 ? SessionContainer.User.Username.Trim().Substring(0, 3) + ".." : SessionContainer.User.Username.Trim();
+	var usernamelg = SessionContainer.User.Username.Trim().Length > 8 ? SessionContainer.User.Username.Trim().Substring(0, 8) + ".." : SessionContainer.User.Username.Trim();
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +31,7 @@
 				<!-- Navigation -->
 				<nav class="header_nav">
 					<ul class="d-flex flex-row align-items-center justify-content-start">
+						<li><a href="javascript:void(0);">Welcome <span style="color: #e83e8c;">@(usernamesm)</span>!</a></li>
 						<li><a href="@Url.Action("Index", "Home")" title="Store">Buy Popcorn</a></li>
 						<li><a href="@Url.Action("Index", "Order")" title="My Order">Check Your Order</a></li>
 						<li><a href="@Url.Action("Logout", "Account")" title="Logout">Say GoodBye</a></li>
@@ -153,6 +158,7 @@
 			<br /><br />
 			<nav class="menu_nav">
 				<ul class="menu_mm">
+					<li class="menu_mm"><a href="javascript:void(0);">Welcome <span style="color: #e83e8c;">@(usernamelg)</span>!</a></li>
 					<li class="menu_mm"><a href="@Url.Action("Index", "Home")" title="Store">Buy Popcorn</a></li>
 					<li class="menu_mm"><a href="@Url.Action("Index", "Order")" title="My Order">Check Your Order</a></li>
 					<li class="menu_mm"><a href="@Url.Action("Logout", "Account")" title="Logout">Say GoodBye</a></li>
@@ -227,7 +233,7 @@
 			<!-- Sidebar Navigation -->
 			<nav class="sidebar_nav">
 				<ul>
-					<li><a href="javascript:void(0);">Welcome <span style="color: #e83e8c;">@(SessionContainer.User.Username)</span>!</a></li>
+					<li><a href="javascript:void(0);">Welcome <span style="color: #e83e8c;">@(usernamelg)</span>!</a></li>
 					<li><a href="@Url.Action("Index", "Home")" title="Store">Buy Popcorn<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
 					<li><a href="@Url.Action("Index", "Order")" title="My Order">Check Your Order<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
 					<li><a href="@Url.Action("Logout", "Account")" title="Logout">Say GoodBye<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
@@ -246,6 +252,7 @@
 				<div class="cart_price">$39.99 (1)</div>
 			</div>
 		</div>
+
 		@RenderBody()
 	</div>
     @Scripts.Render("~/bundles/jquery")
