@@ -92,7 +92,7 @@
 					<!-- Cart -->
 					<div class="cart d-flex flex-row align-items-center justify-content-start">
 						<div class="cart_icon">
-							<a href="cart.html">
+							<a href="@Url.Action("Index", "Order")">
 								<img src="@Url.Content("~/Content/Images/bag.png")" alt="">
 								<div class="cart_num">@(SessionContainer.User.GetOrderCount())</div>
 							</a>
@@ -245,7 +245,7 @@
 			<!-- Cart -->
 			<div class="cart d-flex flex-row align-items-center justify-content-start">
 				<div class="cart_icon">
-					<a href="cart.html">
+					<a href="@Url.Action("Index", "Order")">
 						<img src="@Url.Content("~/Content/Images/bag.png")" alt="">
 						<div class="cart_num">@(SessionContainer.User.GetOrderCount())</div>
 					</a>

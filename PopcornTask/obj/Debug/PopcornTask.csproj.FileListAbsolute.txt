@@ -42,3 +42,4 @@ C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\Popcor
 C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\bin\EntityFramework.xml
 C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\bin\EntityFramework.SqlServer.xml
 C:\Users\Mohamed Hosnie\documents\visual studio 2015\Projects\PopcornTask\PopcornTask\bin\FakeHttpContext.dll
+C:\Users\Mohamed Hosnie\Documents\visual studio 2015\Projects\PopcornTask\PopcornTask\obj\Debug\PopcornTask.csprojResolveAssemblyReference.cache
