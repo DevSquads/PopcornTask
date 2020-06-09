@@ -1331,8 +1331,8 @@ section
 .product_content
 {
 	padding-top: 40px;
-	padding-left: 25px;
-	padding-right: 25px;
+	padding-left: 5px;
+	padding-right: 5px;
 	padding-bottom: 45px;
 	background: #FFFFFF;
 }
@@ -1526,12 +1526,10 @@ section
 	padding-top: 13px;
 	padding-bottom: 13px;
 	text-align: center;
-	font-size: 48px;
+	font-size: 41px;
 	font-weight: 700;
 	line-height: 0.75;
 	color: #bbe432;
-	padding-left: 25px;
-	padding-right: 26px;
 }
 .footer_logo a > div span
 {

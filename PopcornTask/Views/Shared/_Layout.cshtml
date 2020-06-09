@@ -11,7 +11,9 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-	@Styles.Render("~/Content/custom")
+	@if(IsSectionDefined("AddToHead")) {
+		@RenderSection("AddToHead", required: false)
+	}
 </head>
 <body>
 	<div class="super_container">
@@ -92,7 +94,7 @@
 						<div class="cart_icon">
 							<a href="cart.html">
 								<img src="@Url.Content("~/Content/Images/bag.png")" alt="">
-								<div class="cart_num">2</div>
+								<div class="cart_num">@(SessionContainer.User.GetOrderCount())</div>
 							</a>
 						</div>
 					</div>
@@ -245,20 +247,41 @@
 				<div class="cart_icon">
 					<a href="cart.html">
 						<img src="@Url.Content("~/Content/Images/bag.png")" alt="">
-						<div class="cart_num">2</div>
+						<div class="cart_num">@(SessionContainer.User.GetOrderCount())</div>
 					</a>
 				</div>
 				<div class="cart_text">Order</div>
-				<div class="cart_price">$39.99 (1)</div>
+				<div class="cart_price">$@String.Format("{0:n2}", SessionContainer.User.GetTotalCost())</div>
 			</div>
 		</div>
 
 		@RenderBody()
+
+		<!-- Footer -->
+
+		<footer class="footer">
+			<!-- Credits -->
+			<div class="credits">
+				<div class="section_container">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<div class="credits_content d-flex flex-row align-items-center justify-content-end">
+									<div class="credits_text">
+										<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+										This is a free HTML template by <a href="https://colorlib.com" target="_blank">Colorlib</a> | All Popcorn photos are collected from the internet | Customized and functioned by Mohamed Hosnie | All rights reserved
+										<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
 	</div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-	@Scripts.Render("~/bundles/isotope")
-	@Scripts.Render("~/Scripts/custom")
     @RenderSection("scripts", required: false)
 </body>
 </html>

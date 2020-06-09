@@ -29,23 +29,16 @@ namespace PopcornTask.Tests.Controllers {
 		[TestMethod]
 		public void LoginAuthenticatesWhenSuppliedValidUserData() {
 			var controller = new AccountController();
+
 			SystemUser User = new SystemUser();
 			User.Username = "test";
 			User.Password = "test1";
-
-			var dbContext = new PopcornDataEntities();
-			dbContext.SystemUsers.Add(User);
-			dbContext.SaveChanges();
-			dbContext.Dispose();
+			TestInitialize.CreateTestUser(User.Username, User.Password);
 
 			SystemUser resultUser;
-
 			var result = controller.validateUserData(User, out resultUser);
 
-			dbContext = new PopcornDataEntities();
-			dbContext.SystemUsers.RemoveRange(dbContext.SystemUsers.Where(u => u.Username == User.Username));
-			dbContext.SaveChanges();
-			dbContext.Dispose();
+			TestInitialize.DeleteTestUser(User.Username);
 
 			Assert.IsTrue(result);
 			Assert.AreEqual(User.Username.Trim(), resultUser.Username.Trim());
@@ -53,14 +46,9 @@ namespace PopcornTask.Tests.Controllers {
 		[TestMethod]
 		public void LoginFailsWhenSuppliedInvalidUserData() {
 			var controller = new AccountController();
-			SystemUser User = new SystemUser();
-			User.Username = "test";
-			User.Password = "test1";
+			string username = "test";
 
-			var dbContext = new PopcornDataEntities();
-			dbContext.SystemUsers.Add(User);
-			dbContext.SaveChanges();
-			dbContext.Dispose();
+			TestInitialize.CreateTestUser(username, "test1");
 
 			var WrongUser = new SystemUser();
 			WrongUser.Username = "testx";
@@ -70,10 +58,27 @@ namespace PopcornTask.Tests.Controllers {
 
 			var result = controller.validateUserData(WrongUser, out resultUser);
 
-			dbContext = new PopcornDataEntities();
-			dbContext.SystemUsers.RemoveRange(dbContext.SystemUsers.Where(u => u.Username == User.Username));
-			dbContext.SaveChanges();
-			dbContext.Dispose();
+			TestInitialize.DeleteTestUser(username);
+
+			Assert.IsFalse(result);
+			Assert.IsNull(resultUser);
+		}
+		[TestMethod]
+		public void LoginFailsWhenSuppliedRightUsernameAndInvalidPassword() {
+			var controller = new AccountController();
+			string username = "test";
+
+			TestInitialize.CreateTestUser(username, "test1");
+
+			var WrongUser = new SystemUser();
+			WrongUser.Username = username;
+			WrongUser.Password = "textxx";
+
+			SystemUser resultUser;
+
+			var result = controller.validateUserData(WrongUser, out resultUser);
+
+			TestInitialize.DeleteTestUser(username);
 
 			Assert.IsFalse(result);
 			Assert.IsNull(resultUser);

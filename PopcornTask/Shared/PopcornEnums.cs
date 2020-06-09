@@ -9,4 +9,9 @@ namespace PopcornTask.Shared {
 		New = 1,
 		Extra = 2
 	};
+
+	public enum OrderStatus {
+		Open = 1,
+		Closed = 0
+	}
 }

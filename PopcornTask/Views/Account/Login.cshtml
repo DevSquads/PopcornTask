@@ -16,6 +16,9 @@
 	@Scripts.Render("~/Scripts/Login")
 </head>
 <body>
+	<div class="footer_logo">
+		<a href="#"><div><span>Popcorn</span></div></a>
+	</div>
 	<div class="card card-container clearfix">
 		@using(Html.BeginForm("Login", "Account", FormMethod.Post, new { name = "LoginForm" })) {
 			@Html.Hidden("to", Request["to"])

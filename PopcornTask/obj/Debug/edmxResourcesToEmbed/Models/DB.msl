@@ -1,6 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="PopcornDataModelStoreContainer" CdmEntityContainer="PopcornDataEntities">
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="PopcornDataModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="FK_UserId" ColumnName="FK_UserId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderItems">
+      <EntityTypeMapping TypeName="PopcornDataModel.OrderItem">
+        <MappingFragment StoreEntitySet="OrderItem">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="FK_PopcornId" ColumnName="FK_PopcornId" />
+          <ScalarProperty Name="FK_OrderId" ColumnName="FK_OrderId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Popcorns">
       <EntityTypeMapping TypeName="PopcornDataModel.Popcorn">
         <MappingFragment StoreEntitySet="Popcorn">

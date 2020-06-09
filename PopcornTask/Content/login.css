@@ -10,8 +10,8 @@ body * {
 }
 body > div.card {
 	width: 340px;
-	margin: 8% auto;
-	
+	/*margin: 8% auto;*/
+	margin: 20px auto;
 	/*border: 3px solid #bbe432;*/
 	background-color: #edf4f6;
 	border: none;
@@ -36,6 +36,11 @@ button.login_button {
 button.login_button:hover {
 	background: #414141;
 	color: #bbe432;
+}
+.footer_logo {
+	margin: 8% auto 0 auto;
+	opacity: 0.5;
+
 }
 .login_title {
 	font-family: 'Poppins', sans-serif;

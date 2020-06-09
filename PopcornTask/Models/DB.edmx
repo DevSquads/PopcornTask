@@ -5,6 +5,23 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="PopcornDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="FK_UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_OrderId" Type="int" Nullable="false" />
+          <Property Name="FK_PopcornId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Popcorn">
           <Key>
             <PropertyRef Name="Id" />
@@ -24,18 +41,103 @@
           <Property Name="Username" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Password" Type="nchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Order_SystemUser">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FK_UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="FK_OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Popcorn">
+          <End Role="Popcorn" Type="Self.Popcorn" Multiplicity="1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Popcorn">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="FK_PopcornId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PopcornDataModelStoreContainer">
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Popcorn" EntityType="Self.Popcorn" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SystemUser" EntityType="Self.SystemUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Order_SystemUser" Association="Self.FK_Order_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Order" Association="Self.FK_OrderItem_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Popcorn" Association="Self.FK_OrderItem_Popcorn">
+            <End Role="Popcorn" EntitySet="Popcorn" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PopcornDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="PopcornDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Orders" EntityType="PopcornDataModel.Order" />
+          <EntitySet Name="OrderItems" EntityType="PopcornDataModel.OrderItem" />
           <EntitySet Name="Popcorns" EntityType="PopcornDataModel.Popcorn" />
           <EntitySet Name="SystemUsers" EntityType="PopcornDataModel.SystemUser" />
+          <AssociationSet Name="FK_Order_SystemUser" Association="PopcornDataModel.FK_Order_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Order" Association="PopcornDataModel.FK_OrderItem_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Popcorn" Association="PopcornDataModel.FK_OrderItem_Popcorn">
+            <End Role="Popcorn" EntitySet="Popcorns" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="FK_UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SystemUser" Relationship="PopcornDataModel.FK_Order_SystemUser" FromRole="Order" ToRole="SystemUser" />
+          <NavigationProperty Name="OrderItems" Relationship="PopcornDataModel.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_OrderId" Type="Int32" Nullable="false" />
+          <Property Name="FK_PopcornId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="PopcornDataModel.FK_OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
+          <NavigationProperty Name="Popcorn" Relationship="PopcornDataModel.FK_OrderItem_Popcorn" FromRole="OrderItem" ToRole="Popcorn" />
+        </EntityType>
         <EntityType Name="Popcorn">
           <Key>
             <PropertyRef Name="Id" />
@@ -46,6 +148,7 @@
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Discount" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Image" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="OrderItems" Relationship="PopcornDataModel.FK_OrderItem_Popcorn" FromRole="Popcorn" ToRole="OrderItem" />
         </EntityType>
         <EntityType Name="SystemUser">
           <Key>
@@ -54,13 +157,69 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="PopcornDataModel.FK_Order_SystemUser" FromRole="SystemUser" ToRole="Order" />
         </EntityType>
-      </Schema>
+        <Association Name="FK_Order_SystemUser">
+          <End Type="PopcornDataModel.SystemUser" Role="SystemUser" Multiplicity="1" />
+          <End Type="PopcornDataModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FK_UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Order">
+          <End Type="PopcornDataModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="PopcornDataModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="FK_OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Popcorn">
+          <End Type="PopcornDataModel.Popcorn" Role="Popcorn" Multiplicity="1" />
+          <End Type="PopcornDataModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Popcorn">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="FK_PopcornId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="PopcornDataModelStoreContainer" CdmEntityContainer="PopcornDataEntities">
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="PopcornDataModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="FK_UserId" ColumnName="FK_UserId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="PopcornDataModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItem">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="FK_PopcornId" ColumnName="FK_PopcornId" />
+                <ScalarProperty Name="FK_OrderId" ColumnName="FK_OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Popcorns">
             <EntityTypeMapping TypeName="PopcornDataModel.Popcorn">
               <MappingFragment StoreEntitySet="Popcorn">
