@@ -5,7 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bce40b7ff15a45f48f7a44345acb714d" Name="Diagram1">
-        <EntityTypeShape EntityType="PopcornDataModel.SystemUser" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PopcornDataModel.Popcorn" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PopcornDataModel.SystemUser" Width="1.5" PointX="2.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

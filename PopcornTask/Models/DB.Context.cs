@@ -25,6 +25,7 @@ namespace PopcornTask.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Popcorn> Popcorns { get; set; }
         public virtual DbSet<SystemUser> SystemUsers { get; set; }
     }
 }

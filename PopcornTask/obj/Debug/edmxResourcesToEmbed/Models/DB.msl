@@ -1,6 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="PopcornDataModelStoreContainer" CdmEntityContainer="PopcornDataEntities">
+    <EntitySetMapping Name="Popcorns">
+      <EntityTypeMapping TypeName="PopcornDataModel.Popcorn">
+        <MappingFragment StoreEntitySet="Popcorn">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Feature" ColumnName="Feature" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SystemUsers">
       <EntityTypeMapping TypeName="PopcornDataModel.SystemUser">
         <MappingFragment StoreEntitySet="SystemUser">

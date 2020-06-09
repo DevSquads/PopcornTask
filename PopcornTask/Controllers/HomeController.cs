@@ -9,7 +9,7 @@ namespace PopcornTask.Controllers {
 		private PopcornTask.Models.PopcornDataEntities db = new Models.PopcornDataEntities();
 
 		public ActionResult Index() {
-			ViewBag.Users = db.SystemUsers.ToList();
+			ViewBag.Popcorns = db.Popcorns.ToList();
 
 			return View("Index");
 		}

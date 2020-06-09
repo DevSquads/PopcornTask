@@ -48,5 +48,12 @@ namespace PopcornTask.Controllers
 			SessionContainer.User = null;
 			return View(user);
 		}
+		[HttpGet]
+		public ActionResult Logout() {
+			Session.Abandon();
+			Session.Clear();
+			Session.RemoveAll();
+			return RedirectToAction("Login", "Account");
+		}
 	}
 }

@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -313,6 +313,7 @@ section
 	cursor: pointer;
 	padding-bottom: 5px;
 	padding-right: 20px;
+	padding-left: 16px;
 }
 .info_languages::after
 {
@@ -454,7 +455,7 @@ section
 	padding-top: 13px;
 	padding-bottom: 13px;
 	text-align: center;
-	font-size: 48px;
+	font-size: 41px;
 	font-weight: 700;
 	line-height: 0.75;
 	color: #bbe432;
@@ -618,9 +619,10 @@ section
 /* Cart */
 .cart
 {
-	padding-left: 45px;
-	padding-right: 43px;
+	padding-left: 37px;
+	padding-right: 35px;
 	margin-top: 78px;
+	text-align: center;
 }
 .cart_icon
 {
@@ -657,14 +659,14 @@ section
 	font-weight: 700;
 	color: #FFFFFF;
 	text-transform: uppercase;
-	margin-left: 24px;
+	margin-left: 11px;
 }
 .cart_price
 {
 	font-size: 14px;
 	font-weight: 400;
 	color: #FFFFFF;
-	margin-left: 21px;
+	margin-left: 15px;
 }
 
 /*********************************

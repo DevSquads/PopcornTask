@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PopcornTask.Controllers;
 using PopcornTask.Models;
+using PopcornTask.Shared;
 
 namespace PopcornTask.Tests.Controllers {
 	[TestClass]

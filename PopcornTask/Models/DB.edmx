@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="PopcornDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Popcorn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Feature" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Discount" Type="money" />
+          <Property Name="Image" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="SystemUser">
           <Key>
             <PropertyRef Name="Id" />
@@ -14,6 +25,7 @@
           <Property Name="Password" Type="nchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityContainer Name="PopcornDataModelStoreContainer">
+          <EntitySet Name="Popcorn" EntityType="Self.Popcorn" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SystemUser" EntityType="Self.SystemUser" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -21,8 +33,20 @@
     <edmx:ConceptualModels>
       <Schema Namespace="PopcornDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="PopcornDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Popcorns" EntityType="PopcornDataModel.Popcorn" />
           <EntitySet Name="SystemUsers" EntityType="PopcornDataModel.SystemUser" />
         </EntityContainer>
+        <EntityType Name="Popcorn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Feature" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Discount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
         <EntityType Name="SystemUser">
           <Key>
             <PropertyRef Name="Id" />
@@ -37,6 +61,18 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="PopcornDataModelStoreContainer" CdmEntityContainer="PopcornDataEntities">
+          <EntitySetMapping Name="Popcorns">
+            <EntityTypeMapping TypeName="PopcornDataModel.Popcorn">
+              <MappingFragment StoreEntitySet="Popcorn">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Feature" ColumnName="Feature" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SystemUsers">
             <EntityTypeMapping TypeName="PopcornDataModel.SystemUser">
               <MappingFragment StoreEntitySet="SystemUser">

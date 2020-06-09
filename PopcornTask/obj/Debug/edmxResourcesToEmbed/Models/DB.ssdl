@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="PopcornDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Popcorn">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Feature" Type="int" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="Discount" Type="money" />
+    <Property Name="Image" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="SystemUser">
     <Key>
       <PropertyRef Name="Id" />
@@ -9,6 +20,7 @@
     <Property Name="Password" Type="nchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityContainer Name="PopcornDataModelStoreContainer">
+    <EntitySet Name="Popcorn" EntityType="Self.Popcorn" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SystemUser" EntityType="Self.SystemUser" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>
