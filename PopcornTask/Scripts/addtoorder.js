@@ -13,7 +13,7 @@
 			function () { });
 	}
 
-	refresh_order_values = function () {
+	var refresh_order_values = function () {
 		sendRequest(
 			get_order_values_url,
 			'Get',
@@ -22,7 +22,7 @@
 			function () { });
 	}
 
-	set_order_values_in_view = function (data) {
+	var set_order_values_in_view = function (data) {
 		$('.cart_price').html('$' + data.total_cost.toFixed(2));
 		$('.cart_num').html(data.order_count);
 	}

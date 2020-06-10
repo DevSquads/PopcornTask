@@ -8,7 +8,7 @@ using PopcornTask.Shared;
 
 namespace PopcornTask.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
 		private PopcornDataEntities db = new PopcornDataEntities();
 		public ActionResult Login()

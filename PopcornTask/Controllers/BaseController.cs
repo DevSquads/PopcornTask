@@ -29,5 +29,11 @@ namespace PopcornTask.Controllers
 			}
 		}
 
+		protected override void OnActionExecuting(ActionExecutingContext filterContext) {
+			base.OnActionExecuting(filterContext);
+			if(filterContext.Controller.ControllerContext.HttpContext == null)
+				filterContext.Controller.ControllerContext.HttpContext = new HttpContextWrapper(System.Web.HttpContext.Current);
+		}
+
 	}
 }

@@ -8,13 +8,19 @@ using PopcornTask.Shared;
 
 namespace PopcornTask.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
 		private PopcornTask.Models.PopcornDataEntities db = new Models.PopcornDataEntities();
         // GET: Order
         public ActionResult Index()
         {
-            return View();
+			List<OrderItem> OrderItems;
+			var Order = db.Orders.FirstOrDefault(o => o.Status == (int)OrderStatus.Open && o.FK_UserId == SessionContainer.User.Id);
+			if(Order == null) OrderItems = new List<OrderItem>();
+			else {
+				OrderItems = Order.OrderItems.ToList();
+			}
+			return View(OrderItems);
         }
 		public void deleteCurrentOrderOfUser(int UserId) {
 			var User = db.SystemUsers.FirstOrDefault(u => u.Id == UserId);
@@ -48,7 +54,7 @@ namespace PopcornTask.Controllers
 			OrderItem.Quantity += 1;
 			db.SaveChanges();
 		}
-		[HttpPost]
+
 		public void AddOrder(int popcornId) {
 			addOrderToUser(SessionContainer.User.Id, popcornId);
 		}
@@ -58,6 +64,63 @@ namespace PopcornTask.Controllers
 				new {
 					total_cost = SessionContainer.User.GetTotalCost(),
 					order_count = SessionContainer.User.GetOrderCount()
+				},
+				JsonRequestBehavior.AllowGet
+			);
+		}
+		public void DeleteOrderItem(int orderItemId) {
+			var orderItem = db.OrderItems.FirstOrDefault(oi => oi.Id == orderItemId);
+			if(orderItem == null) return;
+
+			db.OrderItems.Remove(orderItem);
+			db.SaveChanges();
+		}
+		public void DeleteOrder() {
+			deleteCurrentOrderOfUser(SessionContainer.User.Id);
+		}
+		public JsonResult OrderItemPlusOne(int orderItemId) {
+			var OrderItem = db.OrderItems.FirstOrDefault(oi => oi.Id == orderItemId);
+			Decimal total;
+			int count;
+			if(OrderItem == null) {
+				total = 0;
+				count = 0;
+			} else {
+				OrderItem.Quantity += 1;
+				count = OrderItem.Quantity;
+				total = (OrderItem.Popcorn.Discount.HasValue ? (Convert.ToDecimal(OrderItem.Quantity) * OrderItem.Popcorn.Discount) : (Convert.ToDecimal(OrderItem.Quantity) * OrderItem.Popcorn.Price)).Value;
+
+				db.SaveChanges();
+			}
+
+			return Json(
+				new {
+					total = total,
+					count = count
+				},
+				JsonRequestBehavior.AllowGet
+			);
+		}
+		public JsonResult OrderItemMinusOne(int orderItemId) {
+			var OrderItem = db.OrderItems.FirstOrDefault(oi => oi.Id == orderItemId);
+			Decimal total;
+			int count;
+			if(OrderItem == null) {
+				total = 0;
+				count = 0;
+			} else {
+				if(OrderItem.Quantity > 1) OrderItem.Quantity -= 1;
+
+				count = OrderItem.Quantity;
+				total = (OrderItem.Popcorn.Discount.HasValue ? (Convert.ToDecimal(OrderItem.Quantity) * OrderItem.Popcorn.Discount) : (Convert.ToDecimal(OrderItem.Quantity) * OrderItem.Popcorn.Price)).Value;
+
+				db.SaveChanges();
+			}
+
+			return Json(
+				new {
+					total = total,
+					count = count
 				},
 				JsonRequestBehavior.AllowGet
 			);

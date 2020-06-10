@@ -1,0 +1,111 @@
+﻿@model IEnumerable<PopcornTask.Models.OrderItem>
+@using PopcornTask.Shared
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section AddToHead {
+	@Styles.Render("~/Content/cart")
+}
+
+<!-- Cart -->
+
+<div class="cart_section">
+	<div class="section_container">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="cart_container">
+
+						<!-- Cart Bar -->
+						<div class="cart_bar">
+							<ul class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-start">
+								<li>Popcorn</li>
+								<li>Price</li>
+								<li>Quantity</li>
+								<li>Total</li>
+							</ul>
+						</div>
+
+						<!-- Cart Items -->
+						<div class="cart_items">
+							<ul class="cart_items_list">
+								@foreach(var item in Model) {
+								<!-- Cart Item -->
+								<li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start @("oi"+item.Id)">
+									<div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+										<div><div class="product_image"><img src="@Url.Content("~/Content/Images/Popcorn/" + item.Popcorn.Image)" alt=""></div></div>
+										<div class="product_name"><a href="javascript:void(0);">@item.Popcorn.Name</a></div>
+									</div>
+									<div class="product_price text-lg-center product_text"><span>Price: </span>$@String.Format("{0:n2}", (item.Popcorn.Discount.HasValue ? item.Popcorn.Discount : item.Popcorn.Price))</div>
+									<div class="product_quantity_container">
+										<div class="product_quantity ml-lg-auto mr-lg-auto text-center">
+											<span class="product_text product_num @("item_count"+item.Id)">@item.Quantity</span>
+											<div class="qty_sub qty_button trans_200 text-center" onclick="@("javascript:minus_order_item(" + item.Id + ")")"><span>-</span></div>
+											<div class="qty_add qty_button trans_200 text-center" onclick="@("javascript:plus_order_item(" + item.Id + ")")"><span>+</span></div>
+										</div>
+									</div>
+									<div class="product_total text-lg-center product_text @("item_total"+item.Id)"><span>Total: </span>$@String.Format("{0:n2}", (item.Popcorn.Discount.HasValue ? (Convert.ToDecimal(item.Quantity) * item.Popcorn.Discount) : (Convert.ToDecimal(item.Quantity) * item.Popcorn.Price)))</div>
+									<div class="product_total text-lg-center product_text"><span></span></div>
+									<div class="delete_item"><a href="@("javascript:delete_order_item(" + item.Id + ")")">Delete</a></div>
+								</li>
+								}
+							</ul>
+						</div>
+
+						<!-- Cart Buttons -->
+						<div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
+							<div class="cart_buttons_inner ml-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
+								<div class="button button_continue trans_200"><a href = "@Url.Action("Index", "Home")" > Get More Popcorn</a></div>
+								<div class="button button_clear trans_200"><a href = "javascript:delete_order();" > Delete Order</a></div>
+								@*<div class="button button_update trans_200"><a href="categories.html">update cart</a></div>*@
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section_container cart_extra_container">
+		<div class="container">
+			<div class="row">
+				<!-- Cart Total -->
+				<div class="col-xxl-6">
+					<div class="cart_extra cart_extra_2">
+						<div class="cart_extra_content cart_extra_total">
+							<div class="cart_extra_title">Cart Total</div>
+							<ul class="cart_extra_total_list">
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="cart_extra_total_title">Subtotal</div>
+									<div class="cart_extra_total_value cart_price ml-auto">$@String.Format("{0:n2}", SessionContainer.User.GetTotalCost())</div>
+								</li>
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="cart_extra_total_title">Shipping</div>
+									<div class="cart_extra_total_value ml-auto">Free</div>
+								</li>
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="cart_extra_total_title">Total</div>
+									<div class="cart_extra_total_value cart_price ml-auto">$@String.Format("{0:n2}", SessionContainer.User.GetTotalCost())</div>
+								</li>
+							</ul>
+							<div class="checkout_button trans_200"><a href="javascript:void(0);">proceed to checkout</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section scripts {
+<script>
+	var delete_order_item_url = "@Url.Action("DeleteOrderItem", "Order")";
+	var delete_order_url = "@Url.Action("DeleteOrder", "Order")";
+	var order_item_plus_url = "@Url.Action("OrderItemPlusOne", "Order")";
+	var order_item_minus_url = "@Url.Action("OrderItemMinusOne", "Order")";
+	var get_order_values_url = "@Url.Action("GetCurrentOrderValues", "Order")";
+</script>
+	@Scripts.Render("~/Scripts/cart")
+}

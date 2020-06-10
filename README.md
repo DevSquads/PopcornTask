@@ -14,17 +14,17 @@
 ### UI
 - Login form. [Done]
 - List of available popcorns, where each item in the list contains price, and type. [Done]
-- List of orders.
-- Create order.
-- Edit order.
-- Delete order.
+- List of orders. [Done]
+- Create order. [Done]
+- Edit order. [Done]
+- Delete order. [Done]
 - Styles and colors are up to you.
 ### Functionality
 - Login with preexisting user. [Done] username: dev & password: dev
-- Order popcorn, edit order, delete order.
+- Order popcorn, edit order, delete order. [Done]
 # Stack
 - Choosing the tech stack is up to you. [Chose Microsoft Stack .NET MVC with SQL Server]
 # Nice to have
 - Tests. [Present]
-- Organized and well written git commit history.
-- E2E tests.
+- Organized and well written git commit history. [I hope mine is]
+- E2E tests. 
