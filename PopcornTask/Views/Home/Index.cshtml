@@ -1,0 +1,63 @@
+﻿@model PopcornTask.Models.Popcorn
+@using PopcornTask.Models
+@using PopcornTask.Shared
+@{
+	ViewBag.Title = "Home Page";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+
+	var Popcorns = ViewBag.Popcorns as List<Popcorn>;
+}
+@section AddToHead {
+	@Styles.Render("~/Content/custom")
+}
+<div class="products">
+	<div class="section_container">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="products_container grid" style="position: relative; height: 1447.75px;">
+						@foreach(var popcorn in Popcorns) {
+							var feature =
+									popcorn.Discount.HasValue ? "sale" :
+									popcorn.Feature == (int)Feature.New ? "new" :
+									popcorn.Feature == (int)Feature.Extra ? "hot" : "";
+							var product_tag =
+									popcorn.Discount.HasValue ? "DISC" :
+									popcorn.Feature == (int)Feature.New ? "New" :
+									popcorn.Feature == (int)Feature.Extra ? "Extra" : "";
+
+							<!-- Product -->
+							<div class="product grid-item @feature">
+								<div class="product_inner">
+									<div class="product_image">
+										<img src="@Url.Content("~/Content/Images/Popcorn/" + popcorn.Image)" alt="">
+										<div class="product_tag">@product_tag</div>
+									</div>
+									<div class="product_content text-center">
+										<div class="product_title"><a href="javascript:void(0);">@popcorn.Name</a></div>
+										@if(popcorn.Discount.HasValue) {
+										<div class="product_price">$@String.Format("{0:n2}", popcorn.Discount) <span>Price $@String.Format("{0:n2}", popcorn.Price)</span></div>
+										} else {
+										<div class="product_price">$@String.Format("{0:n2}", popcorn.Price)</div>
+										}
+										<div class="product_button ml-auto mr-auto trans_200"><a href="@("javascript:add_to_order(" + popcorn.Id + ");")">add to order</a></div>
+									</div>
+								</div>
+							</div>
+						}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section scripts {
+<script>
+	var add_order_url = "@Url.Action("AddOrder", "Order")";
+	var get_order_values_url = "@Url.Action("GetCurrentOrderValues", "Order")";
+</script>
+	@Scripts.Render("~/bundles/isotope")
+	@Scripts.Render("~/Scripts/custom")
+}

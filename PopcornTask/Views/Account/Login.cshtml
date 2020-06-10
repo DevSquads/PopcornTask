@@ -1,0 +1,47 @@
+﻿@model PopcornTask.Models.SystemUser
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login | Popcorn</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+
+	@Styles.Render("~/Content/Login")
+	@Scripts.Render("~/Scripts/Login")
+</head>
+<body>
+	<div class="footer_logo">
+		<a href="#"><div><span>Popcorn</span></div></a>
+	</div>
+	<div class="card card-container clearfix">
+		@using(Html.BeginForm("Login", "Account", FormMethod.Post, new { name = "LoginForm" })) {
+			@Html.Hidden("to", Request["to"])
+			@Html.ValidationSummary(true, "", new { @class = "error" })
+
+			@Html.Label("Login", new { @class = "login_title" })
+			<div class="form-group">
+				@Html.TextBoxFor(u => u.Username, new { @class = "form-control", @placeholder = "Username", id = "Username" })
+				@Html.ValidationMessageFor(u => u.Username, null, new { @class = "required" })
+			</div>
+
+			<div class="form-group">
+				@Html.PasswordFor(u => u.Password, new { @class= "form-control", @placeholder = "Password", id = "Password" })
+				@Html.ValidationMessageFor(u => u.Password, null, new { @class = "required" })
+			</div>
+
+			<div class="form-group">
+				<button type="submit" class="login_button trans_200">Login</button>
+			</div>
+
+		}
+	</div>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

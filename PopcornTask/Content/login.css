@@ -1,0 +1,58 @@
+﻿body {
+	background-color: #FFFFFF;
+}
+body * {
+	border-radius: 0 !important;
+	box-shadow: none !important;
+}
+.form-control:focus {
+	border-color: #bbe432;
+}
+body > div.card {
+	width: 340px;
+	/*margin: 8% auto;*/
+	margin: 20px auto;
+	/*border: 3px solid #bbe432;*/
+	background-color: #edf4f6;
+	border: none;
+}
+form {
+	margin: 30px;
+	
+}
+button.login_button {
+    width: 122px;
+    height: 42px;
+    background: #bbe432;
+    color: #414141;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    outline: none;
+	float: right;
+	cursor: pointer;
+}
+button.login_button:hover {
+	background: #414141;
+	color: #bbe432;
+}
+.footer_logo {
+	margin: 8% auto 0 auto;
+	opacity: 0.5;
+
+}
+.login_title {
+	font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #414141;
+    line-height: 0.75;
+	margin-bottom: 22px;
+}
+.validation-summary-errors {
+	margin-bottom: 10px;
+}
+.error, .required {
+	color: #db5246;
+}

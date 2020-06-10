@@ -1,0 +1,287 @@
+﻿@using PopcornTask.Shared
+@{ 
+	var usernamesm = SessionContainer.User.Username.Trim().Length > 3 ? SessionContainer.User.Username.Trim().Substring(0, 3) + ".." : SessionContainer.User.Username.Trim();
+	var usernamelg = SessionContainer.User.Username.Trim().Length > 8 ? SessionContainer.User.Username.Trim().Substring(0, 8) + ".." : SessionContainer.User.Username.Trim();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+	@if(IsSectionDefined("AddToHead")) {
+		@RenderSection("AddToHead", required: false)
+	}
+</head>
+<body>
+	<div class="super_container">
+		<!-- Header -->
+
+		<header class="header">
+			<div class="header_content d-flex flex-row align-items-center justify-content-start">
+
+				<!-- Hamburger -->
+				<div class="hamburger menu_mm"><i class="fa fa-bars menu_mm" aria-hidden="true"></i></div>
+
+				<!-- Logo -->
+				<div class="header_logo">
+					<a href="#"><div><span>Popcorn</span></div></a>
+				</div>
+
+				<!-- Navigation -->
+				<nav class="header_nav">
+					<ul class="d-flex flex-row align-items-center justify-content-start">
+						<li><a href="javascript:void(0);">Welcome <span style="color: #e83e8c;">@(usernamesm)</span></a></li>
+						<li><a href="@Url.Action("Index", "Home")" title="Store">Check Popcorn List</a></li>
+						<li><a href="@Url.Action("Index", "Order")" title="My Order">Check Your Order</a></li>
+						<li><a href="@Url.Action("Logout", "Account")" title="Logout">Say GoodBye</a></li>
+					</ul>
+				</nav>
+
+				<!-- Header Extra -->
+				<div class="header_extra ml-auto d-flex flex-row align-items-center justify-content-start">
+
+					<!-- Language -->
+					<div class="info_languages has_children">
+						<div class="dropdown_text">english</div>
+						<div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+
+						<!-- Language Dropdown Menu -->
+						<ul>
+							<li>
+								<a href="#">
+									<div class="dropdown_text">french</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="dropdown_text">japanese</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="dropdown_text">russian</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="dropdown_text">spanish</div>
+								</a>
+							</li>
+						</ul>
+
+					</div>
+
+					<!-- Currency -->
+					<div class="info_currencies has_children">
+						<div class="dropdown_text">usd</div>
+						<div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+
+						<!-- Currencies Dropdown Menu -->
+						<ul>
+							<li><a href="#"><div class="dropdown_text">EUR</div></a></li>
+							<li><a href="#"><div class="dropdown_text">YEN</div></a></li>
+							<li><a href="#"><div class="dropdown_text">GBP</div></a></li>
+							<li><a href="#"><div class="dropdown_text">CAD</div></a></li>
+						</ul>
+
+					</div>
+
+					<!-- Cart -->
+					<div class="cart d-flex flex-row align-items-center justify-content-start">
+						<div class="cart_icon">
+							<a href="@Url.Action("Index", "Order")">
+								<img src="@Url.Content("~/Content/Images/bag.png")" alt="">
+								<div class="cart_num">@(SessionContainer.User.GetOrderCount())</div>
+							</a>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</header>
+
+		<!-- Menu -->
+
+		<div class="menu d-flex flex-column align-items-start justify-content-start menu_mm trans_400">
+			<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+			<div class="menu_top d-flex flex-row align-items-center justify-content-start">
+
+				<!-- Language -->
+				<div class="info_languages has_children">
+					<div class="dropdown_text">english</div>
+					<div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+
+					<!-- Language Dropdown Menu -->
+					<ul>
+						<li>
+							<a href="#">
+								<div class="dropdown_text">french</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="dropdown_text">japanese</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="dropdown_text">russian</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="dropdown_text">spanish</div>
+							</a>
+						</li>
+					</ul>
+
+				</div>
+
+				<!-- Currency -->
+				<div class="info_currencies has_children">
+					<div class="dropdown_text">usd</div>
+					<div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+
+					<!-- Currencies Dropdown Menu -->
+					<ul>
+						<li><a href="#"><div class="dropdown_text">EUR</div></a></li>
+						<li><a href="#"><div class="dropdown_text">YEN</div></a></li>
+						<li><a href="#"><div class="dropdown_text">GBP</div></a></li>
+						<li><a href="#"><div class="dropdown_text">CAD</div></a></li>
+					</ul>
+
+				</div>
+
+			</div>
+			<br /><br />
+			<nav class="menu_nav">
+				<ul class="menu_mm">
+					<li class="menu_mm"><a href="javascript:void(0);">Welcome <span style="color: #e83e8c;">@(usernamelg)</span></a></li>
+					<li class="menu_mm"><a href="@Url.Action("Index", "Home")" title="Store">Check Popcorn List</a></li>
+					<li class="menu_mm"><a href="@Url.Action("Index", "Order")" title="My Order">Check Your Order</a></li>
+					<li class="menu_mm"><a href="@Url.Action("Logout", "Account")" title="Logout">Say GoodBye</a></li>
+				</ul>
+			</nav>
+			<div class="menu_extra">
+				
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+
+		<div class="sidebar">
+			<!-- Info -->
+			<div class="info">
+				<div class="info_content d-flex flex-row align-items-center justify-content-start">
+
+					<!-- Language -->
+					<div class="info_languages has_children">
+						<div class="dropdown_text">english</div>
+						<div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+
+						<!-- Language Dropdown Menu -->
+						<ul>
+							<li>
+								<a href="#">
+									<div class="dropdown_text">french</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="dropdown_text">japanese</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="dropdown_text">russian</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="dropdown_text">spanish</div>
+								</a>
+							</li>
+						</ul>
+
+					</div>
+
+					<!-- Currency -->
+					<div class="info_currencies has_children">
+						<div class="dropdown_text">usd</div>
+						<div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+
+						<!-- Currencies Dropdown Menu -->
+						<ul>
+							<li><a href="#"><div class="dropdown_text">EUR</div></a></li>
+							<li><a href="#"><div class="dropdown_text">YEN</div></a></li>
+							<li><a href="#"><div class="dropdown_text">GBP</div></a></li>
+							<li><a href="#"><div class="dropdown_text">CAD</div></a></li>
+						</ul>
+
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Logo -->
+			<div class="sidebar_logo">
+				<a href="#"><div><span>Popcorn</span></div></a>
+			</div>
+
+			<!-- Sidebar Navigation -->
+			<nav class="sidebar_nav">
+				<ul>
+					<li><a href="javascript:void(0);">Welcome <span style="color: #e83e8c;">@(usernamelg)</span></a></li>
+					<li><a href="@Url.Action("Index", "Home")" title="Store">Check Popcorn List<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+					<li><a href="@Url.Action("Index", "Order")" title="My Order">Check Your Order<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+					<li><a href="@Url.Action("Logout", "Account")" title="Logout">Say GoodBye<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+				</ul>
+			</nav>
+
+			<!-- Cart -->
+			<div class="cart d-flex flex-row align-items-center justify-content-start">
+				<div class="cart_icon">
+					<a href="@Url.Action("Index", "Order")">
+						<img src="@Url.Content("~/Content/Images/bag.png")" alt="">
+						<div class="cart_num">@(SessionContainer.User.GetOrderCount())</div>
+					</a>
+				</div>
+				<div class="cart_text">Order</div>
+				<div class="cart_price">$@String.Format("{0:n2}", SessionContainer.User.GetTotalCost())</div>
+			</div>
+		</div>
+
+		@RenderBody()
+
+		<!-- Footer -->
+
+		<footer class="footer">
+			<!-- Credits -->
+			<div class="credits">
+				<div class="section_container">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<div class="credits_content d-flex flex-row align-items-center justify-content-end">
+									<div class="credits_text">
+										<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+										I used a free HTML template by <a href="https://colorlib.com" target="_blank">Colorlib</a> | Popcorn photos are collected from the internet | All rights reserved
+										<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
