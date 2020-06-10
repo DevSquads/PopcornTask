@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lan = "eng">
+    <head>
+        <meta charset="utf-8">
+        <title> order </title>
+        <link rel="stylesheet" href="Style.CSS">
+        <script src="JavaS/Script.js"></script>
+    </head>
+    <Body>  
+<h1>Create new order</h1>
+        <div class="menu">
+        <a href="login_form.html">FeedBack</a> &nbsp; &nbsp;
+        <a ></a>
+        </div>
+<aside>
+    <img src="Images/popcorn2.jpg" width="300" height="450">
+    </aside>          
+<h2>Choose item number and size: </h2>      
+<form class="list2"  method="post" action="order.php">
+    <div>
+    <ul ><li><label for="choose">How many would you like from the basic popcorn ?</label></li></ul>
+    <input type="number" id="number1" name="amount" value="0" min="0" max="50">
+    <select id="custom-select1">
+    <option value="0">Select size:</option>
+    <option value="1">Regular</option>
+    <option value="2">Large</option>
+        </select>
+  </div>
+  <div>
+    <ul><li><label for="number">How many would you like from the caramel popcorn ?</label></li></ul>
+    <input type="number" id="number2" name="amount1" value="0" min="0" max="50">
+      <select id="custom-select2">
+      <option value="0">Select size:</option>
+      <option value="1">Regular</option>
+      <option value="2">Large</option>
+        </select>
+        </div>    
+    
+    <div>
+    <ul><li><label for="number">How many would you like from the popcorn with cheese?</label></li></ul>
+    <input type="number" id="number3" name="amount2" value="0" min="0" max="50">
+    <select id="custom-select3">
+    <option value="0">Select size:</option>
+    <option value="1">Regular</option>
+    <option value="2">Large</option>
+    </select>
+    </div>
+    <div>
+    <ul><li><label for="number">Total Price</label></li></ul>
+    <input type="number" id="text" name="total">  </div>
+    <br>
+    <div>
+   
+        <input id="button1" type="submit" value="Create an order" onclick="myfunction()"/> 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" value="view all orders" id="button1"/>      
+    </div>
+    </form>  
+</Body>
+        </html>
